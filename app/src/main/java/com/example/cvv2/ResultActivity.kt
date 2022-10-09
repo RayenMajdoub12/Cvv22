@@ -2,7 +2,9 @@ package com.example.cvv2
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.net.toUri
 
 class ResultActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,6 +21,7 @@ class ResultActivity : AppCompatActivity() {
         val flutterskill = intent.getStringExtra("Flutter")
         val language = intent.getStringExtra("Language")
         val hbs = intent.getStringExtra("Hobbies")
+        val image = intent.getStringExtra("Image")!!.toUri()
 
         val name= findViewById<TextView>(R.id.Name)
         val email= findViewById<TextView>(R.id.Email)
@@ -29,7 +32,7 @@ class ResultActivity : AppCompatActivity() {
         val flutter= findViewById<TextView>(R.id.Flutter_skill)
         val lang= findViewById<TextView>(R.id.Languages)
         val hobbies= findViewById<TextView>(R.id.hobbies)
-
+        val imageview = findViewById<ImageView>(R.id.imageView2)
         name.text="Name:$FullName"
         email.text="Email:$mail"
         yearold.text="Age:$age"
@@ -39,5 +42,6 @@ class ResultActivity : AppCompatActivity() {
         flutter.text="FlutterSkill:$flutterskill"
         lang.text="Languages:$language"
         hobbies.text="Hobbies:$hbs"
+        imageview.setImageURI(image)
     }
 }

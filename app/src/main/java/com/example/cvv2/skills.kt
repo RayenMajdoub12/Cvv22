@@ -1,11 +1,16 @@
 package com.example.cvv2
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent.getIntent
+import android.net.Uri
 import android.os.Bundle
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.SeekBar
+import androidx.appcompat.app.AppCompatActivity
+
+
+
 
 class skills : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,6 +32,8 @@ class skills : AppCompatActivity() {
         val age = intent.getStringExtra("Age")
         val mail = intent.getStringExtra("Email")
         val genre = intent.getStringExtra("Gender")
+        val imagestring = intent.getStringExtra("Image")
+
         submit.setOnClickListener {
             val intent = Intent(this, ResultActivity::class.java)
             val lang = when {
@@ -60,6 +67,7 @@ class skills : AppCompatActivity() {
             intent.putExtra("Age", age)
             intent.putExtra("Email", mail)
             intent.putExtra("Gender", genre)
+            intent.putExtra("Image",imagestring)
             startActivity(intent)
         }
     }

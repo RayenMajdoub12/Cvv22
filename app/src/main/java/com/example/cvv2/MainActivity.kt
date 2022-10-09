@@ -39,8 +39,7 @@ class MainActivity : AppCompatActivity() {
         val GenderGroup = findViewById<RadioGroup>(R.id.RadioGroup)
         val groupe = GenderGroup.checkedRadioButtonId
         val FM = findViewById<RadioButton>(groupe)
-         val pickImage = 100
-         var imageUri: Uri? = null
+
         button.setOnClickListener {
           val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
           startActivityForResult(gallery, pickImage)
@@ -105,14 +104,14 @@ class MainActivity : AppCompatActivity() {
             val ageV2 = age.text.toString()
             val mail = email.text.toString()
             val genre = FM.text.toString()
-            val image = imageView
+
 
             val intent = Intent(this, skills::class.java)
             intent.putExtra("Username", fullname)
             intent.putExtra("Email", mail)
             intent.putExtra("Age", ageV2)
             intent.putExtra("Gender", genre)
-
+            intent.putExtra("Image",imageUri.toString())
             startActivity(intent)
 
         }
