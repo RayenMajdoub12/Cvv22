@@ -1,11 +1,15 @@
 package com.example.cvv2
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.PatternMatcher
+import android.provider.MediaStore
 import android.util.Patterns
 import android.widget.Button
+import android.widget.Gallery
+import android.widget.ImageView
 import android.widget.RadioButton
 import android.widget.RadioGroup
 
@@ -13,11 +17,16 @@ import androidx.core.widget.doOnTextChanged
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 
-
+private val pickImage = 100
+private var imageUri: Uri? = null
+lateinit var imageView: ImageView
+lateinit var button: Button
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+       button = findViewById(R.id.BSelectImage)
+         imageView = findViewById(R.id.IVPreviewImage)
         //input
         val name = findViewById<TextInputEditText>(R.id.NameInput)
         val email = findViewById<TextInputEditText>(R.id.emailInput)
@@ -30,6 +39,15 @@ class MainActivity : AppCompatActivity() {
         val GenderGroup = findViewById<RadioGroup>(R.id.RadioGroup)
         val groupe = GenderGroup.checkedRadioButtonId
         val FM = findViewById<RadioButton>(groupe)
+         val pickImage = 100
+         var imageUri: Uri? = null
+        button.setOnClickListener {
+          val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
+          startActivityForResult(gallery, pickImage)
+
+      }
+
+
         when {
             email.text!!.isEmpty()->next_button.isEnabled = false
             age.text!!.isEmpty()->next_button.isEnabled= false
@@ -87,16 +105,25 @@ class MainActivity : AppCompatActivity() {
             val ageV2 = age.text.toString()
             val mail = email.text.toString()
             val genre = FM.text.toString()
+            val image = imageView
 
             val intent = Intent(this, skills::class.java)
             intent.putExtra("Username", fullname)
             intent.putExtra("Email", mail)
             intent.putExtra("Age", ageV2)
             intent.putExtra("Gender", genre)
+
             startActivity(intent)
 
         }
 
     }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == RESULT_OK && requestCode == pickImage) {
+            imageUri = data?.data
+            imageView.setImageURI(imageUri)
+        }
 
     }
+}
