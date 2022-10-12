@@ -20,12 +20,12 @@ import com.google.android.material.textfield.TextInputLayout
 private val pickImage = 100
 private var imageUri: Uri? = null
 lateinit var imageView: ImageView
-lateinit var button: Button
+
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-       button = findViewById(R.id.BSelectImage)
+
          imageView = findViewById(R.id.IVPreviewImage)
         //input
         val name = findViewById<TextInputEditText>(R.id.NameInput)
@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         val groupe = GenderGroup.checkedRadioButtonId
         val FM = findViewById<RadioButton>(groupe)
 
-        button.setOnClickListener {
+        imageView.setOnClickListener {
           val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
           startActivityForResult(gallery, pickImage)
 

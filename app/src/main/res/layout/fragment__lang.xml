@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragment_Lang">
+    <RelativeLayout
+        android:id="@+id/language_layout"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/background_border"
+   >
+
+
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="8dp"
+        android:text="Language"
+        android:textAlignment="viewStart"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/textView5"
+        android:layout_margin="8dp">
+
+        <CheckBox
+            android:id="@+id/checkBox_arabic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/colorSecondary"
+            android:checked="false"
+            android:text="Arabic"
+            android:textColor="@color/colorPrimary" />
+
+        <CheckBox
+            android:id="@+id/checkbox_french"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:buttonTint="@color/colorSecondary"
+            android:text="French"
+            android:textColor="@color/colorPrimary" />
+
+        <CheckBox
+            android:id="@+id/checkBox_english"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerHorizontal="true"
+            android:buttonTint="@color/colorSecondary"
+            android:text="English"
+            android:textColor="@color/colorPrimary" />
+    </RelativeLayout>
+    </RelativeLayout>
+</FrameLayout>

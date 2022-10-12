@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragment_Hobbies">
+
+    <RelativeLayout
+        android:id="@+id/Hobbies_layout"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/background_border"
+
+    >
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="160dp"
+            android:layout_marginTop="8dp"
+            android:text="Hobbies"
+            android:textAlignment="viewStart"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold"
+          />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/textView6"
+            android:layout_margin="8dp">
+
+            <CheckBox
+                android:id="@+id/checkBox_music"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="false"
+                android:buttonTint="@color/colorSecondary"
+                android:text="Music"
+                android:textColor="@color/colorPrimary"
+                android:clickable="false"/>
+
+            <CheckBox
+                android:id="@+id/checkBox_sport"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:buttonTint="@color/colorSecondary"
+                android:text="Sport"
+                android:textColor="@color/colorPrimary"
+                android:clickable="false"/>
+
+            <CheckBox
+                android:id="@+id/checkBox_game"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@id/checkBox_sport"
+                android:layout_alignParentEnd="true"
+                android:buttonTint="@color/colorSecondary"
+                android:text="Games"
+                android:textColor="@color/colorPrimary"
+                android:clickable="false"/>
+        </RelativeLayout>
+    </RelativeLayout>
+
+</FrameLayout>
