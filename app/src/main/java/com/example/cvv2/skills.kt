@@ -28,7 +28,7 @@ class skills : AppCompatActivity() {
         val submit = findViewById<Button>(R.id.SUBMIT)
 
         val intent = intent
-        val name = intent.getStringExtra("Name")
+        val name = intent.getStringExtra("Username")
         val age = intent.getStringExtra("Age")
         val mail = intent.getStringExtra("Email")
         val genre = intent.getStringExtra("Gender")
@@ -58,9 +58,9 @@ class skills : AppCompatActivity() {
                 else -> "None"
             }
 
-            intent.putExtra("Android", androidSkill.progress.toString())
-            intent.putExtra("iOS", iosSkill.progress.toString())
-            intent.putExtra("Flutter", flutterSkill.progress.toString())
+            intent.putExtra("Android", androidSkill.progress)
+            intent.putExtra("iOS", iosSkill.progress)
+            intent.putExtra("Flutter", flutterSkill.progress)
             intent.putExtra("Language", lang)
             intent.putExtra("Hobbies", hb)
             intent.putExtra("Name", name)

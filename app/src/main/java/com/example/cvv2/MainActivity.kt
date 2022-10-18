@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.os.PatternMatcher
 import android.provider.MediaStore
 import android.util.Patterns
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.Gallery
 import android.widget.ImageView
@@ -25,7 +26,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
          imageView = findViewById(R.id.IVPreviewImage)
         //input
         val name = findViewById<TextInputEditText>(R.id.NameInput)

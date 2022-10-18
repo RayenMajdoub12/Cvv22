@@ -9,33 +9,92 @@ import android.widget.CheckBox
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+private const val ARG_PARAM1 = "param1"
+private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
  * Use the [Fragment_Hobbies.newInstance] factory method to
  * create an instance of this fragment.
- */
-class Fragment_Hobbies : Fragment(R.layout.fragment__hobbies) {
+ */  private var param1: String? = null
+private var param2: String? = null
+class Fragment_Hobbies : Fragment() {
 
+    // TODO: Rename and change types of parameters
+    private var param1: String? = null
+    private var param2: String? = null
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.let {
+            param1 = it.getString(ARG_PARAM1)
+            param2 = it.getString(ARG_PARAM2)
+        }
+    }
 
-         val Bundle= arguments
-         val hobbies =Bundle!!.getString("Hobbies")
-        println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"+hobbies+"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
-
-        val checkboxmusic = view.findViewById<CheckBox>(R.id.checkBox_music)
-        val checkboxsport= view.findViewById<CheckBox>(R.id.checkBox_sport)
-        val checkboxgame = view.findViewById<CheckBox>(R.id.checkBox_game)
-
-        when{
-            hobbies!!.contains("Music") -> checkboxmusic.isChecked = true
-            hobbies!!.contains("Sport") -> checkboxsport.isChecked = true
-            hobbies!!.contains("Game") -> checkboxgame.isChecked = true
-
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val view =inflater.inflate(R.layout.fragment__hobbies, container, false)
+        val Music: CheckBox = view.findViewById(R.id.checkBox_music)
+        val Sport: CheckBox = view.findViewById(R.id.checkBox_sport)
+        val Games: CheckBox = view.findViewById(R.id.checkBox_game)
+        if(arguments?.getString( ARG_PARAM1)=="Music Sport Games"){
+            Music.setChecked(true)
+            Sport.setChecked(true)
+            Games.setChecked(true)
+        }
+        else if(arguments?.getString( ARG_PARAM1)=="Sport Music")
+        {
+            Music.setChecked(true)
+            Sport.setChecked(true)
+        }
+        else if(arguments?.getString( ARG_PARAM1)=="Games Music")
+        {
+            Music.setChecked(true)
+            Games.setChecked(true)
+        }
+        else if(arguments?.getString( ARG_PARAM1)=="Sport Games")
+        {
+            Sport.setChecked(true)
+            Games.setChecked(true)
+        }
+        else if(arguments?.getString( ARG_PARAM1)=="Music")
+        {
+            Music.setChecked(true)
 
         }
+        else if(arguments?.getString( ARG_PARAM1)=="Sport")
+        {
+            Sport.setChecked(true)
 
+        }
+        else if(arguments?.getString( ARG_PARAM1)=="Games")
+        {
+            Games.setChecked(true)
+
+        }
+        return view
     }
-}
+
+    companion object {
+        /**
+         * Use this factory method to create a new instance of
+         * this fragment using the provided parameters.
+         *
+         * @param param1 Parameter 1.
+         * @param param2 Parameter 2.
+         * @return A new instance of fragment hobbiesfragment.
+         */
+        // TODO: Rename and change types and number of parameters
+        @JvmStatic
+        fun newInstance(param1: String, param2: String) =
+            Fragment_Hobbies().apply {
+                arguments = Bundle().apply {
+                    putString(ARG_PARAM1, param1)
+                    putString(ARG_PARAM2, param2)
+                }
+            }
+    }}

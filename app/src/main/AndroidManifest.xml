@@ -15,8 +15,8 @@
         <activity
             android:name=".ResultActivity"
             android:exported="false"
-            android:theme="@style/Theme.Cvv2"
-            android:label="Result">
+            android:theme="@style/Theme.Cvv2.NoActionBar"
+       >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

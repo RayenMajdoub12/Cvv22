@@ -2,24 +2,32 @@ package com.example.cvv2
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.widget.Toolbar
 import androidx.core.net.toUri
 
 class ResultActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_result)
+
+        val toolbar: Toolbar = findViewById(R.id.app_bar)
+        setSupportActionBar(toolbar)
+
 //intent
         val intent = intent
         val FullName = intent.getStringExtra("Name")
         val age = intent.getStringExtra("Age")
         val mail = intent.getStringExtra("Email")
         val gender = intent.getStringExtra("Gender")
-        val androidskill = intent.getStringExtra("Android")
-        val iosSkill = intent.getStringExtra("iOS")
-        val flutterskill = intent.getStringExtra("Flutter")
+        val androidskill = intent.getIntExtra("Android",0)
+        val iosSkill = intent.getIntExtra("iOS",0)
+        val flutterskill = intent.getIntExtra("Flutter",0)
         val language = intent.getStringExtra("Language")
         val hbs = intent.getStringExtra("Hobbies")
         val image = intent.getStringExtra("Image")!!.toUri()
@@ -32,56 +40,45 @@ class ResultActivity : AppCompatActivity() {
         val button_s=findViewById<Button>(R.id.button_s)
         val button_l=findViewById<Button>(R.id.button_l)
         //fragments and bundles
-        //bundle hobbie
-        val firstfargment=Fragment_Hobbies()
+
+
+        val firstfargment=Fragment_Hobbies.newInstance(hbs.toString(),"")
+
         //skills
-        val secondfragment=Fragment_Skills()
+        val secondfragment=Fragment_Skills.newInstance(androidskill,iosSkill,flutterskill)
 
         //lang
-        val thirdfragment =Fragment_Lang()
+        val thirdfragment =Fragment_Lang.newInstance(language.toString(),"")
+
 
 
         //fragments manager
         supportFragmentManager.beginTransaction().apply {
-
-            val hBundle = Bundle()
-            hBundle.putString("Hobbies",hbs)
-            firstfargment.arguments = hBundle
             replace(R.id.fragmentContainerView3,firstfargment)
             commit()
-
         }
+
         button_h.setOnClickListener {
 
-
             supportFragmentManager.beginTransaction().apply {
-                val hBundle = Bundle()
-                hBundle.putString("Hobbies",hbs)
-                firstfargment.arguments = hBundle
+
                 replace(R.id.fragmentContainerView3, firstfargment)
                 commit()
             }
         }
             button_s.setOnClickListener {
                 supportFragmentManager.beginTransaction().apply {
-                    val sBundle = Bundle()
-                    sBundle.putString("Android",androidskill)
-                    sBundle.putString("iOS",iosSkill)
-                    sBundle.putString("Flutter",flutterskill)
-                    secondfragment.arguments = sBundle
+
                     replace(R.id.fragmentContainerView3, secondfragment)
                     commit()
                 }
             }
                 button_l.setOnClickListener {
                     supportFragmentManager.beginTransaction().apply {
-                        val lBundle = Bundle()
-                        lBundle.putString("Language",language)
-                        firstfargment.arguments = lBundle
+
                         replace(R.id.fragmentContainerView3, thirdfragment)
                         commit()
                     }}
-
 
 
 
@@ -105,4 +102,26 @@ class ResultActivity : AppCompatActivity() {
         hobbies.text="Hobbies:$hbs"*/
                     imageview.setImageURI(image)
                 }
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val intent = intent
+        val FullName = intent.getStringExtra("Name")
+        val age = intent.getStringExtra("Age")
+        val mail = intent.getStringExtra("Email")
+        val gender = intent.getStringExtra("Gender")
+        val fourthfragment = AboutMeFragment.newInstance(FullName.toString(),age.toString(),gender.toString(),mail.toString())
+        when (item.itemId) {
+            R.id.info -> supportFragmentManager.beginTransaction().apply {
+
+                replace(R.id.fragmentContainerView3, fourthfragment)
+                commit()
             }
+
+        }
+        return super.onOptionsItemSelected(item)
+    }
+}
