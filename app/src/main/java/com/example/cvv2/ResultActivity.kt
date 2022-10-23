@@ -1,5 +1,6 @@
 package com.example.cvv2
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -31,6 +32,7 @@ class ResultActivity : AppCompatActivity() {
         val language = intent.getStringExtra("Language")
         val hbs = intent.getStringExtra("Hobbies")
         val image = intent.getStringExtra("Image")!!.toUri()
+        val buttoncareer = findViewById<Button>(R.id.buttoncareer)
         println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"+hbs+"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
 
         val name = findViewById<TextView>(R.id.Name)
@@ -101,6 +103,14 @@ class ResultActivity : AppCompatActivity() {
         lang.text="Languages:$language"
         hobbies.text="Hobbies:$hbs"*/
                     imageview.setImageURI(image)
+
+        buttoncareer.setOnClickListener {
+
+
+            val intent = Intent(this, Career::class.java)
+            startActivity(intent)
+
+        }
                 }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu, menu)

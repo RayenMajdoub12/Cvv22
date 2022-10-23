@@ -13,10 +13,30 @@
         android:theme="@style/Theme.Cvv2.NoActionBar"
         tools:targetApi="31">
         <activity
+            android:name=".AddEducation"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".AddExperience"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Career"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".ResultActivity"
             android:exported="false"
-            android:theme="@style/Theme.Cvv2.NoActionBar"
-       >
+            android:theme="@style/Theme.Cvv2.NoActionBar">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
