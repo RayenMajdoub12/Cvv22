@@ -51,7 +51,7 @@ class my_experience : Fragment(R.layout.fragment_my_experience) {
         // Inflate the layout for this fragment
         val view =inflater.inflate(R.layout.fragment_my_experience, container, false)
 
-       val dataBase:AppDataBase= AppDataBase.getDatabase(this)
+ 
         recylcerexp = view.findViewById(R.id.RecyclerExperience)
         recylcerExpAdapter = ExperienceAdapter(Career.ExperienceList)
         recylcerexp.adapter = recylcerExpAdapter
