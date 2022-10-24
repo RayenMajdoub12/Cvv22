@@ -1,6 +1,6 @@
 package com.example.cvv2
 
-import android.content.Context
+
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.cvv2.Entity.Experience
 import com.example.cvv2.ListExperience.ExperienceAdapter
 import com.example.cvv2.utils.AppDataBase
+import java.io.Serializable
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -25,7 +26,7 @@ private const val ARG_PARAM2 = "param2"
 
 class my_experience : Fragment(R.layout.fragment_my_experience) {
     // TODO: Rename and change types of parameters
-    private var param1: java.io.Serializable? = null
+    private var param1: String? = null
     private var param2: String? = null
     lateinit var recylcerexp: RecyclerView
     lateinit var recylcerExpAdapter: ExperienceAdapter
@@ -35,7 +36,7 @@ class my_experience : Fragment(R.layout.fragment_my_experience) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getSerializable(ARG_PARAM1)
+            param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
 
@@ -49,13 +50,11 @@ class my_experience : Fragment(R.layout.fragment_my_experience) {
     ): View? {
         // Inflate the layout for this fragment
         val view =inflater.inflate(R.layout.fragment_my_experience, container, false)
+
+       val dataBase:AppDataBase= AppDataBase.getDatabase(this)
         recylcerexp = view.findViewById(R.id.RecyclerExperience)
-       val  ExperienceList  :MutableList<Experience> = arguments.getSerializable()
-
-        recylcerExpAdapter = ExperienceAdapter(ExperienceList)
-
+        recylcerExpAdapter = ExperienceAdapter(Career.ExperienceList)
         recylcerexp.adapter = recylcerExpAdapter
-
         recylcerexp.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL ,false)
         return  view
 
@@ -72,7 +71,7 @@ class my_experience : Fragment(R.layout.fragment_my_experience) {
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance(param1: MutableList<Experience>, param2: String) =
+        fun newInstance(param1: String, param2: String) =
             my_experience().apply {
                 arguments = Bundle().apply {
                     putSerializable(ARG_PARAM1, param1)

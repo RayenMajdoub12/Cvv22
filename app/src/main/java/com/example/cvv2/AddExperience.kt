@@ -26,7 +26,7 @@ class AddExperience : AppCompatActivity() {
         dataBase = AppDataBase.getDatabase(this)
         val ExpDao : ExperienceRepository
         val Input_company_name : TextInputEditText=findViewById(R.id.Input_comp_name)
-        val Input_company_adress : TextInputEditText=findViewById(R.id.Input_uni_adresse)
+        val Input_company_adress : TextInputEditText=findViewById(R.id.Input_comp_adresse)
     val Input_end_date: TextInputEditText = findViewById(R.id.Input_end_date)
     val Input_start_date: TextInputEditText = findViewById(R.id.input_start_date)
         val saveBtn :Button = findViewById(R.id.save)
@@ -77,6 +77,9 @@ class AddExperience : AppCompatActivity() {
                 ,Input_end_date.text.toString())
 
            dataBase.ExperienceDao().insert(exp)
+
+            finish()
+
 
 
 

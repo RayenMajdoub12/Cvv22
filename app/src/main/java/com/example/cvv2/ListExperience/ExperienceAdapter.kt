@@ -24,7 +24,8 @@ class ExperienceAdapter(val ExperienceList:MutableList<Experience>) : RecyclerVi
         val image = ExperienceList[position].CompanyPic
 
 
-        holder.CompanyPic.setImageResource(image)
+     //   holder.CompanyPic.setImageResource(image)
+
         holder.CompanyName.text = name
         holder.CompanyAdress.text = adress
         holder.Start_date.text = Startdate

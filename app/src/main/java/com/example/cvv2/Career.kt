@@ -14,7 +14,9 @@ import com.example.cvv2.utils.AppDataBase
 
 class Career : AppCompatActivity() {
     lateinit var dataBase : AppDataBase
-    lateinit var ExperienceList : MutableList<Experience>
+    companion object {
+        lateinit var ExperienceList: MutableList<Experience>
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_career)
@@ -29,7 +31,7 @@ val buttoneducation : Button = findViewById(R.id.buttonEducation)
         //TODO 12 "Get All champions from dataBase"
         ExperienceList = dataBase.ExperienceDao().getAllExperience() as MutableList<Experience>
 
-        val experiencefragment :my_experience=my_experience.newInstance(ExperienceList,"")
+        val experiencefragment :my_experience=my_experience.newInstance("","")
         val educationfragment :my_education=my_education.newInstance("","")
    val tool_bar_back : Toolbar = findViewById(R.id.bar_career)
 
