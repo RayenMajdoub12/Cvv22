@@ -1,10 +1,8 @@
 package com.example.cvv2.ListExperience
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.cvv2.Entity.Experience
 import com.example.cvv2.R
 import com.example.cvv2.utils.AppDataBase

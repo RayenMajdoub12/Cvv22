@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.widget.Button
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.datepicker.MaterialDatePicker
@@ -19,6 +20,7 @@ class AddEducation : AppCompatActivity() {
         ImageView1 = findViewById(R.id.IVPreviewImage)
         val Input_end_date: TextInputEditText = findViewById(R.id.Input_end_date)
         val Input_start_date: TextInputEditText = findViewById(R.id.input_start_date)
+        val save_button : Button = findViewById(R.id.save)
         //date
         ImageView1.setOnClickListener {
             val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)

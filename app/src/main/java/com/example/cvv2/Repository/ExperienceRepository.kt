@@ -16,5 +16,5 @@ interface ExperienceRepository {
     fun delete(experience: Experience)
 
     @Query("SELECT * FROM Experience")
-    fun getAllChamps(): List<Experience>
+    fun getAllExperience(): List<Experience>
 }
