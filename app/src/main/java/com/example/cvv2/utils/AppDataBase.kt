@@ -11,7 +11,7 @@ import com.example.cvv2.Entity.Experience
 import com.example.cvv2.Repository.EducationRepository
 import com.example.cvv2.Repository.ExperienceRepository
 
-@Database(entities = [Experience::class,Education::class], version = 1)
+@Database(entities = [Experience::class,Education::class], version = 2)
  abstract class AppDataBase :RoomDatabase(){
     abstract fun ExperienceDao(): ExperienceRepository
     abstract fun EducationDao(): EducationRepository
@@ -26,6 +26,7 @@ import com.example.cvv2.Repository.ExperienceRepository
                     instance =
                         Room.databaseBuilder(context, AppDataBase::class.java, "CV")
                             .allowMainThreadQueries()
+                            .fallbackToDestructiveMigration()
                             .build()
                 }
             }

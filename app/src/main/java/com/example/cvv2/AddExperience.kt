@@ -7,9 +7,12 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.widget.Button
 import android.widget.ImageView
+import androidx.appcompat.widget.Toolbar
 import com.example.cvv2.Entity.Experience
+import com.example.cvv2.ListExperience.ExperienceAdapter
 import com.example.cvv2.Repository.ExperienceRepository
 import com.example.cvv2.utils.AppDataBase
+import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.textfield.TextInputEditText
 private val pickImage = 100
@@ -21,10 +24,14 @@ class AddExperience : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_experience)
 
-
+val experienceAdapter : ExperienceAdapter = ExperienceAdapter(Career.ExperienceList)
     ImageView2 = findViewById(R.id.IVPreviewImage)
         dataBase = AppDataBase.getDatabase(this)
         val ExpDao : ExperienceRepository
+val toolbar : MaterialToolbar =findViewById(R.id.topAppBar)
+        toolbar.setNavigationOnClickListener{
+            finish()
+        }
         val Input_company_name : TextInputEditText=findViewById(R.id.Input_comp_name)
         val Input_company_adress : TextInputEditText=findViewById(R.id.Input_comp_adresse)
     val Input_end_date: TextInputEditText = findViewById(R.id.Input_end_date)
@@ -70,14 +77,15 @@ class AddExperience : AppCompatActivity() {
         saveBtn.setOnClickListener {
             val exp:Experience= Experience(
                 0,
-                1,
+               imageUri.toString() ,
                 Input_company_name.text.toString()
                 ,Input_company_adress.text.toString()
                 ,Input_start_date.text.toString()
                 ,Input_end_date.text.toString())
 
            dataBase.ExperienceDao().insert(exp)
-
+          Career.ExperienceList.add(exp)
+          experienceAdapter.notifyDataSetChanged()
             finish()
 
 
@@ -90,6 +98,7 @@ override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) 
     super.onActivityResult(requestCode, resultCode, data)
     if (resultCode == AppCompatActivity.RESULT_OK && requestCode == pickImage) {
         imageUri = data?.data
+        getContentResolver().takePersistableUriPermission( imageUri!!,Intent.FLAG_GRANT_READ_URI_PERMISSION)
         ImageView2.setImageURI(imageUri)
     }
 

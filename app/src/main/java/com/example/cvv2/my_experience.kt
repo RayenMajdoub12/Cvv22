@@ -44,6 +44,7 @@ class my_experience : Fragment(R.layout.fragment_my_experience) {
 
     }
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -51,7 +52,7 @@ class my_experience : Fragment(R.layout.fragment_my_experience) {
         // Inflate the layout for this fragment
         val view =inflater.inflate(R.layout.fragment_my_experience, container, false)
 
- 
+
         recylcerexp = view.findViewById(R.id.RecyclerExperience)
         recylcerExpAdapter = ExperienceAdapter(Career.ExperienceList)
         recylcerexp.adapter = recylcerExpAdapter

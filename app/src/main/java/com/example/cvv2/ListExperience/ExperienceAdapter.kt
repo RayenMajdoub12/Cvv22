@@ -2,6 +2,7 @@ package com.example.cvv2.ListExperience
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cvv2.Entity.Experience
 import com.example.cvv2.R
@@ -17,6 +18,7 @@ class ExperienceAdapter(val ExperienceList:MutableList<Experience>) : RecyclerVi
     }
 
     override fun onBindViewHolder(holder: ExperienceViewHolder, position: Int) {
+
         val name = ExperienceList[position].CompanyName
         val adress = ExperienceList[position].CompanyAdress
         val Startdate = ExperienceList[position].Start_date
@@ -24,8 +26,8 @@ class ExperienceAdapter(val ExperienceList:MutableList<Experience>) : RecyclerVi
         val image = ExperienceList[position].CompanyPic
 
 
-     //   holder.CompanyPic.setImageResource(image)
 
+        holder.CompanyPic.setImageURI(image.toUri())
         holder.CompanyName.text = name
         holder.CompanyAdress.text = adress
         holder.Start_date.text = Startdate
@@ -43,7 +45,6 @@ class ExperienceAdapter(val ExperienceList:MutableList<Experience>) : RecyclerVi
         }*/
 
         holder.btnDelete.setOnClickListener {
-            //TODO 13 "Delete a champion from the database and refresh the recyclerView"
             AppDataBase.getDatabase(holder.itemView.context).ExperienceDao().delete(ExperienceList[position])
             ExperienceList.removeAt(position)
             notifyDataSetChanged()

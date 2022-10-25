@@ -9,6 +9,7 @@ import android.widget.Button
 import androidx.appcompat.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cvv2.Entity.Experience
+import com.example.cvv2.ListExperience.ExperienceAdapter
 import com.example.cvv2.utils.AppDataBase
 
 
@@ -31,10 +32,13 @@ val buttoneducation : Button = findViewById(R.id.buttonEducation)
         //TODO 12 "Get All champions from dataBase"
         ExperienceList = dataBase.ExperienceDao().getAllExperience() as MutableList<Experience>
 
+
         val experiencefragment :my_experience=my_experience.newInstance("","")
         val educationfragment :my_education=my_education.newInstance("","")
    val tool_bar_back : Toolbar = findViewById(R.id.bar_career)
-
+   tool_bar_back.setNavigationOnClickListener{
+       finish()
+   }
         tool_bar_back.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.experience -> {
@@ -74,26 +78,36 @@ val buttoneducation : Button = findViewById(R.id.buttonEducation)
         }
     }
 
-   /* override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_experience, menu)
-        return super.onCreateOptionsMenu(menu)
-    }
+    /* override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+         menuInflater.inflate(R.menu.menu_experience, menu)
+         return super.onCreateOptionsMenu(menu)
+     }
 
-  override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        println("+++++++++++++++++++++++"+item.itemId)
-        when (item.itemId) {
-            1 ->{
-                val intent = Intent(this, AddExperience::class.java)
-                startActivity(intent)
-            }
-            2 ->{
-                val intent = Intent(this, AddEducation::class.java)
-                startActivity(intent)
-            }
+   override fun onOptionsItemSelected(item: MenuItem): Boolean {
+         println("+++++++++++++++++++++++"+item.itemId)
+         when (item.itemId) {
+             1 ->{
+                 val intent = Intent(this, AddExperience::class.java)
+                 startActivity(intent)
+             }
+             2 ->{
+                 val intent = Intent(this, AddEducation::class.java)
+                 startActivity(intent)
+             }
 
 
+         }
+         return super.onOptionsItemSelected(item)
+     }*/
+   // override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+  //      super.onActivityResult(requestCode, resultCode, data)
+  //  }
+    override fun onResume() {
+        supportFragmentManager.beginTransaction().apply {
+            val experiencefragment :my_experience=my_experience.newInstance("","")
+            replace(R.id.relativeLayout2,experiencefragment)
+            commit()
         }
-        return super.onOptionsItemSelected(item)
-    }*/
-
+        super.onResume()
+    }
 }

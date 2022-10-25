@@ -7,6 +7,7 @@ import android.provider.MediaStore
 import android.widget.Button
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.textfield.TextInputEditText
 private val pickImage = 100
@@ -22,6 +23,10 @@ class AddEducation : AppCompatActivity() {
         val Input_start_date: TextInputEditText = findViewById(R.id.input_start_date)
         val save_button : Button = findViewById(R.id.save)
         //date
+        val toolbar : MaterialToolbar =findViewById(R.id.topAppBar)
+        toolbar.setNavigationOnClickListener{
+            finish()
+        }
         ImageView1.setOnClickListener {
             val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
             startActivityForResult(gallery, pickImage)

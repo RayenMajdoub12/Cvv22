@@ -7,10 +7,10 @@ import androidx.room.PrimaryKey
 @Entity
 
 data class Education(
-    @DrawableRes
+
     @PrimaryKey(autoGenerate = true)
     val id: Int,
-    val UniPic: Int,
+    val UniPic: String,
     val UniName:String,
     val UniAdress:String,
     val Start_date:String,
