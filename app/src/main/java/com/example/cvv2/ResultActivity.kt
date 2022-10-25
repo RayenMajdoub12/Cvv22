@@ -10,6 +10,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import androidx.core.net.toUri
+import kotlin.system.exitProcess
 
 class ResultActivity : AppCompatActivity() {
 
@@ -130,8 +131,21 @@ class ResultActivity : AppCompatActivity() {
                 replace(R.id.fragmentContainerView3, fourthfragment)
                 commit()
             }
+                    R.id.logout -> {
+                        // Handle favorite icon press
+                        val sharedPreferences = getSharedPreferences("sharedPrefs", 0)
+                        sharedPreferences.edit().clear().commit()
 
-        }
+                        exitProcess(0)
+                        true
+                    }
+
+
+                    else -> false
+                }
+
+
+        
         return super.onOptionsItemSelected(item)
     }
 }
